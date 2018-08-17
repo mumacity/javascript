@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function(global){
+            function jQuery(selector){
+                return new init(selector);
+            }
+            function init(selector){
+            let elements = document.querySelectorAll(selector);
+            this.eles = elements;
+            }
+            init.prototype.css = function(name,value){
+                for(let i=0; i<this.eles.length; i++){
+                    let ele = this.eles[i];
+                    ele.style[name] = value;
+                }
+            }
+            global.jQuery = global.$ = jQuery;
+        })(window)
+    </script>
+</body>
+</html>

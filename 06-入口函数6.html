@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function (global) {
+            function jQuery(selector) {
+                return jQuery.fn.init(selector);
+            }
+            jQuery.fn = jQuery.prototype = {
+                constructor: jQuery,
+                init: function (selector) {
+                    let elements = document.querySelectorAll(selector);
+                    for (let i = 0; i < elements.length; i++) {
+                        this[i] = elements[i];
+                    }
+                    this.length = elements.length;
+                },
+                css(name, value) {
+                    for (let i = 0; i < this.length; i++) {
+                        let ele = this[i];
+                        ele.style[name] = value;
+                    }
+                }
+            }
+            jQuery.fn.init.prototype = jQuery.fn;
+            global.jQuery = global.$ = jQuery;
+        })(window)
+    </script>
+</body>
+</html>

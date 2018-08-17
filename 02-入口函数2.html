@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        (function(global){
+            function jQuery(selector){
+            let elements = document.querySelectorAll(selector);
+            elements.css =function(){};
+            //这样的写法导致每次调用$()，都会产生css方法，造成内存的浪费。
+            return elements;
+            }
+            global.jQuery = global.$ = jQuery;
+        })(window)
+    </script>
+</body>
+</html>
